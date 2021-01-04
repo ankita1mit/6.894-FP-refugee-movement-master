@@ -2,6 +2,8 @@
 
 In this project, we set out to investigate what caused the major movements of people seeking asylum since 1959 and what similarities and differences exist across geographies and events.
 
+Demo Page: https://github.mit.edu/pages/6894-sp20/FP-refugee-movement/
+
 Team Members
 > Oliver Regele (oregele)
 
