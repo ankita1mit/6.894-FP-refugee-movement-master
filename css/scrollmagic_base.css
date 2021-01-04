@@ -1,0 +1,191 @@
+.fs {
+    height: 100vh;
+}
+
+/* =Header */
+
+.header-container {
+    text-align: center;
+    color: black;
+}
+
+.header-container .wrapper {
+    padding-top: 120px;
+    margin: 0 100px 0 100px;
+    z-index: 2;
+    position: relative;
+}
+
+.header-container .bcg {
+    -webkit-transition: -webkit-transform 4s ease-out;
+    transition: transform 4s ease-out;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-transform-origin: top center;
+    -ms-transform-origin: top center;
+    transform-origin: top center;
+}
+
+.header-container.is-loaded .bcg {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.bcg {
+    background: no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    width: 99%;
+    height: 95%;
+    z-index: 1;
+    opacity: 0.1;
+}
+
+.header-container .bcg {
+    background-image: url(../assets/img/european_crisis.jpg);
+    background-size: cover;
+}
+
+/* =Content Block */
+
+.content-block {
+    background-color: #212121;
+    color: rgba(255, 255, 255, 0.9);
+    height: 30vh;
+}
+
+.content-block .wrapper {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.no-touch .content-block .wrapper {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.no-touch .content-block.is-active .wrapper {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+/* =Simple animation up */
+
+.no-touch .slideInUp {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: all 0.7s ease-out;
+    transition: all 0.7s ease-out;
+    -webkit-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+}
+
+.no-touch .is-active .slideInUp {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slideInUp.slideInUp2 {
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+
+.slideInUp.slideInUp3 {
+    -webkit-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+}
+
+#iht_logo {
+    width: 100px;
+    margin-bottom: 30px;
+}
+
+/* =Navigation */
+/* 
+nav {
+    display: none;
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: right;
+    z-index: 100;
+}
+
+nav a {
+    display: block;
+    line-height: 25px;
+    position: relative;
+    padding-right: 20px;
+    color: gray;
+    text-decoration: none;
+}
+
+nav a:hover .nav-label {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+nav .nav-dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    background-color: gray;
+    border-radius: 100%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+nav .nav-label {
+    display: block;
+    opacity: 0.5;
+    visibility: hidden;
+    -webkit-transform: translateX(-10px);
+    -ms-transform: translateX(-10px);
+    transform: translateX(-10px);
+    -webkit-transition: all 0.2s cubic-bezier(.17, .67, .83, .67);
+    transition: all 0.2s cubic-bezier(.17, .67, .83, .67);
+}
+
+nav.is-dark a {
+    color: #212121;
+}
+
+nav.is-dark .nav-dot {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+nav.is-light a {
+    color: #ffffff;
+}
+
+nav.is-light .nav-dot {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    width: auto;
+    list-style: none;
+} */

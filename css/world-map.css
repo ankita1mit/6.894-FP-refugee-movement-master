@@ -1,0 +1,96 @@
+
+.geoPath {
+    fill: white;
+    stroke: white;
+    stroke-width: 1px;
+}
+
+div.tooltip {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: .5em;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 10px;
+    opacity: 0.9;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+svg.g.d.path {
+    fill: white;
+    stroke: white;
+    stroke-width: 1px;
+}
+
+.graticule {
+    fill: none;
+    stroke: white;
+    stroke-width: 0.5px;
+}
+
+.foreground {
+    fill: none;
+}
+
+.spacer-around {
+    margin-top: 10px;
+    width: 70%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15%;
+}
+
+.full-container {
+    align-items: center;
+    justify-content: center
+}
+
+.border-view {
+    border: 1px solid black;
+}
+
+.legendThreshold {
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+.legendTitle {
+    font-size: 15px;
+    fill: #4F4F4F;
+    font-weight: 12;
+    font-family: Consolas, courier;
+    color: lightgrey;
+}
+
+.tick {
+    font-family: Consolas, courier;
+    fill: #000;
+    font-size: 9pt;
+}
+
+.arcs {
+    fill: none;
+    stroke: none;
+    /*black;*/
+    pointer-events: none;
+}
+
+.net-arrivals {
+    fill: none;
+    stroke: navy;
+    stroke-width: 2;
+    opacity: 0.5
+}
+
+.net-departures {
+    fill: none;
+    stroke: red;
+    stroke-width: 2;
+    opacity: 0.5
+}

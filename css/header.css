@@ -1,0 +1,101 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 1280px;
+    /* color: #3b3b3b; */
+    font-size: 24px;
+}
+
+p, h1, h2, h3, h4, a {
+    margin: 0;
+    font-weight: 400;
+}
+
+.parallaxParent {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.parallaxParent>* {
+    height: 200%;
+    position: relative;
+    top: -100%;
+}
+
+#intro {
+    /* max-width: 70rem;
+    margin: 1rem auto; */
+    text-align: center;
+}
+
+#table-of-contents {
+    text-align: center;
+    padding: 55px;
+}
+
+#block {
+    display: inline-block;
+    padding: 10px;
+    /* border: 1px solid black; */
+    font-family: Helvetica;
+    color: white;
+    width: 350px;
+    height: 100px;
+    background: #212121;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 400;
+    font-size: large;
+}
+
+.section-title {
+    z-index: 3;
+    position: relative;
+    color: white;
+}
+
+.description {
+    margin-top: 10px;
+    font-size: small;
+}
+
+#map-section, #conflict-map-section, #rwanda-map-section, #venezuela-map-section{
+    margin-top: 5vh;
+    padding: 50px;
+}
+
+.world-map-header {
+    font-size: medium;
+    margin-bottom: 10px;
+}
+
+.viewport {
+    height: 100%;
+    width: 100%
+}
+
+.animate-box {
+    display: inline-block;
+    position: relative;
+    border-radius: 8px;
+    border: 0px solid white;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0 5px;
+    min-width: 100px;
+    height: 100px;
+    margin-left: 40%;
+    color: black;
+    background-color: lightblue;
+}
+
+#part-3, #part-4 {
+    margin-top: 20vh;
+    padding-top: 100px;
+    border-top: 1px dashed orange;
+}
+
+.active {
+    background-color: #307FB5;
+}

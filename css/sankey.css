@@ -1,0 +1,15 @@
+#sankey-container-syria, #sankey-container-rwanda, #sankey-container-venezuela {
+	height: 600px;
+	font-size: 30em;
+	font-weight: 700;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+.anychart-credits {
+	opacity: 0 !important;
+	pointer-events: none;
+	cursor: default;
+	text-decoration: none;
+	color: black;
+}

@@ -1,0 +1,138 @@
+.humans-backgrounds {
+    margin-bottom: 92vh;
+}
+
+.footer {
+    margin-top: 92vh;
+}
+
+.header-container .rwanda-human-cover {
+    -webkit-transition: -webkit-transform 4s ease-out;
+    transition: transform 4s ease-out;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-transform-origin: top center;
+    -ms-transform-origin: top center;
+    transform-origin: top center;
+}
+
+.header-container.is-loaded .rwanda-human-cover {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.header-container .rwanda-human-cover {
+    background-image: url(https://www.international-alert.org/sites/default/files/images/FRACTURED%20LIVES_132_IMG_2253.jpg) !important;
+    background-size: cover;
+}
+
+.rwanda-human-cover {
+    background: no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    width: 99%;
+    height: 95%;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.rwanda-human-intro {
+    /* margin-left: 60px; */
+    margin: auto;
+    padding-top: 270px;
+    width: 650px;
+    vertical-align: auto;
+}
+
+.header-container .venezuela-human-cover {
+    -webkit-transition: -webkit-transform 4s ease-out;
+    transition: transform 4s ease-out;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-transform-origin: top center;
+    -ms-transform-origin: top center;
+    transform-origin: top center;
+}
+
+.header-container.is-loaded .venezuela-human-cover {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.header-container .venezuela-human-cover {
+    background-image: url(https://www.rescue.org/sites/default/files/styles/well_width_breakpoints_theme_rescue_medium_1x/public/article/3575/images/rsz_20181119_abrenner_colombia_009.jpg?itok=Wi35ZUj9&timestamp=1586384465) !important;
+    background-size: cover;
+}
+
+.venezuela-human-cover {
+    background: no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    width: 99%;
+    height: 95%;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.venezuela-human-intro {
+    margin-left: 60px;
+    padding-top: 200px;
+    width: 650px;
+}
+
+.header-container .syria-human-cover {
+    -webkit-transition: -webkit-transform 4s ease-out;
+    transition: transform 4s ease-out;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-transform-origin: top center;
+    -ms-transform-origin: top center;
+    transform-origin: top center;
+}
+
+.header-container.is-loaded .syria-human-cover {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.header-container .syria-human-cover {
+    background-image: url(https://cf-images.eu-west-1.prod.boltdns.net/v1/static/665003303001/8cf66b22-fac9-4bc1-97a4-43148293b0f1/bf9815a6-5294-4e80-96d3-5b15070c627f/1920x1080/match/image.jpg) !important;
+    background-size: cover;
+}
+
+.syria-human-cover {
+    background: no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    width: 99%;
+    height: 95%;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.syria-human-intro {
+    /* margin-left: 60px; */
+    margin: auto;
+    padding-top: 200px;
+    width: 650px;
+    align-content: center;
+    opacity: 1;
+}
+
+
+/* .syria-human-intro {
+    margin-left: 60px;
+    padding-top: 200px;
+    width: 650px;
+    position: center;
+} */
+
+.info-text {
+    font-weight: 900;
+}

@@ -1,0 +1,396 @@
+#rwanda-scene,
+#venezuela-scene,
+#syria-scene {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+#slideContainer-rwanda,
+#slideContainer-venezuela,
+#slideContainer-syria {
+    width: 400%;
+    /* to contain 4 panels, each with 100% of window width */
+    height: 100%;
+}
+
+.panel {
+    height: 100%;
+    width: 25%;
+    /* relative to parent -> 25% of 400% = 100% of window width */
+    float: left;
+    opacity: 100%;
+}
+
+.geo-summary {
+    margin: 100 100 60 100;
+    opacity: 0.7;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    font-size: xx-large;
+}
+
+
+/* .geo-summary {
+    margin: 100 100 60 100;
+    opacity: 1;
+    color: black;
+    font-weight: bold;
+} */
+
+.players-summary {
+    margin: 100 100 60 100;
+    opacity: 0.7;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    font-size: xx-large;
+}
+
+.groupX {
+    display: inline-block;
+    width: 40%;
+    padding: 20px;
+    margin: auto;
+}
+
+.groupY {
+    display: inline-block;
+    width: 40%;
+    padding: 20px;
+    margin: auto;
+}
+
+.desc-text {
+    padding: 50px;
+    font-size: medium;
+}
+
+.conflict-summary {
+    margin: 100 100 60 100;
+    opacity: 0.7;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    font-size: x-large;
+}
+
+.svg-data-container {
+    display: inline-block;
+    width: 40%;
+    padding: 20px;
+    margin: auto;
+    vertical-align: top;
+}
+
+.details-container {
+    display: inline-block;
+    width: 75%;
+    padding: 5px;
+    margin: auto;
+    color: white;
+    background-color: black;
+    opacity: 0.7;
+    position: center;
+}
+
+.details-container-geo {
+    display: inline-block;
+    width: 20%;
+    padding: 20px;
+    margin: auto;
+    font-size: medium;
+    vertical-align: text-top;
+}
+
+.details-container-rwa {
+    display: inline-block;
+    width: 25%;
+    padding: 20px;
+    margin: auto;
+    font-size: medium;
+}
+
+.details-container-ven {
+    display: inline-block;
+    width: 40%;
+    padding: 25px;
+    margin: auto;
+    font-size: medium;
+    opacity: 0.7;
+    color: white;
+    background-color: black;
+}
+
+.outcomes-summary {
+    margin: 100 100 60 100;
+    opacity: 0.7;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    font-size: xx-large;
+}
+
+#slideContainer-rwanda .geo-political {
+    position: relative;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+#slideContainer-rwanda .geo-political:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* content: url(http://scd.rfi.fr/sites/filesrfi/imagecache/rfi_16x9_1024_578/sites/images.rfi.fr/files/aef_image/KIGALI_0.jpg); */
+    content: url(../assets/img/rwanda_geo-political.png);
+    /* content: url(https://images.squarespace-cdn.com/content/57b88db03e00be38aec142b0/1534829157672-VJ9FMM16PP9VIKAVLK4L/What+To+Do+In+Kigali+Rwanda+-+City+Guide+Where+to+Stay+Where+to+Eat+Where+To+Shop+HandZaround.jpg?format=1500w&content-type=image%2Fjpeg); */
+    opacity: 0.25;
+    background-size: cover;
+}
+
+#slideContainer-rwanda .key-players {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-rwanda .key-players:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: url(https://postmediacanadadotcom.files.wordpress.com/2014/04/528557890.jpg);
+    opacity: 0.25;
+}
+
+#slideContainer-rwanda .events {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-rwanda .events:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: url(http://www.youthareawesome.com/wp-content/uploads/2015/05/RWANDA-GENOCIDE.jpg);
+    opacity: 0.25;
+}
+
+#slideContainer-rwanda .outcomes {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-rwanda .outcomes:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: url(https://thyblackman.com/wp-content/uploads/2015/08/rwandan-refugees-2015.jpg);
+    /* content: url(https://www.history.com/s3static/video-thumbnails/AETN-History_VMS/21/204/tdih-april07-HD.jpg); */
+    /* content: url(../assets/img/rwanda_outcomes1.jpg); */
+    opacity: 0.25;
+}
+
+#slideContainer-venezuela .geo-political {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-venezuela .geo-political:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* content: url(https://images.axios.com/eoYqkEucfZZPQ-nOs12-P0t6XDA=/0x42:3000x1730/1920x1080/2019/12/19/1576798782778.jpg); */
+    /* content: url(../assets/img/venezuela_geo-political.jpg); */
+    content: url(https://images.axios.com/eoYqkEucfZZPQ-nOs12-P0t6XDA=/0x42:3000x1730/1920x1080/2019/12/19/1576798782778.jpg);
+    opacity: 0.2;
+}
+
+#slideContainer-venezuela .key-players {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-venezuela .key-players:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* content: url(http://media4.s-nbcnews.com/j/newscms/2015_06/879036/maduro-poster-hugo-chavez_815906bdd7d47da7cdeba43b2f68f322.nbcnews-fp-1200-800.jpg); */
+    content: url(https://cdn.thewire.in/wp-content/uploads/2018/01/24112338/2018-01-23T194949Z_1_LYNXMPEE0M1QM_RTROPTP_4_VENEZUELA-POLITICS.jpg);
+    opacity: 0.2;
+}
+
+#slideContainer-venezuela .events {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-venezuela .events:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* content: url(https://files.cfr.org/interactive/sites/default/files/2019-05/RTX6RKI9_Venezuela-militias-Maduro_Miraflores%20Palace-Handout%20via%20Reuters%20--%20original.jpg); */
+    content: url(https://media3.s-nbcnews.com/i/newscms/2019_05/2735211/190130-venezuela-maduro-protests-cs-324p_64e3def764ecb9d82851ecd3c18fad57.jpg);
+    opacity: 0.2;
+}
+
+#slideContainer-venezuela .outcomes {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-venezuela .outcomes:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: url(https://static.timesofisrael.com/www/uploads/2019/05/5-2-19-venezuela-1-1.jpg);
+    opacity: 0.2;
+}
+
+#slideContainer-syria .geo-political {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-syria .geo-political:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* content: url(https://www.nationsonline.org/gallery/Syria/Temple-of-Bel-Palmyra-Syria.jpg); */
+    /* content: url(../assets/img/syria_geo-political.jpg); */
+    content: url(https://www.gannett-cdn.com/presto/2019/10/13/PSTC/55993a48-f337-4c8d-b676-5c493357d7e5-AFP_AFP_1LD9V0.jpg?crop=4239%2C2826%2Cx0%2Cy0&width=1920&height=1440&fit=bounds&auto=webp);
+    opacity: 0.15;
+}
+
+#slideContainer-syria .key-players {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-syria .key-players:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* content: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Participants_in_Syrian_Civil_War-en.svg/600px-Participants_in_Syrian_Civil_War-en.svg.png); */
+    content: url(../assets/img/syria_players.jpg);
+    opacity: 0.3;
+}
+
+#slideContainer-syria .events {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-syria .events:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* content: url(https://d.newsweek.com/en/full/363474/08-14-aleppo-01.webp?w=1440&h=720&f=0db4a9da0141a0d3dc170dd8a4bcae3e); */
+    /* content: url(../assets/img/syria_events.jpg); */
+    content: url(https://niamhshackletonblog.files.wordpress.com/2016/07/syria1.jpg?w=2000&h=1200&crop=1);
+    opacity: 0.5;
+}
+
+#slideContainer-syria .outcomes {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /*if you want to crop the image*/
+    text-align: center;
+}
+
+#slideContainer-syria .outcomes:before {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* content: url(https://static01.nyt.com/images/2015/09/30/world/01migration-web/01migration-web-superJumbo.jpg); */
+    content: url(../assets/img/syria_outcomes.jpg);
+    opacity: 0.5;
+}
+
+select {
+    display: block;
+}
+
+.bar {
+    fill: navy;
+    opacity: 0.8;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+select {
+    width: 100%;
+    height: 50px;
+    font-size: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: #c0392b;
+    border: none;
+    border-bottom: 2px solid #962d22;
+    color: white;
+    padding: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px;
+}
+
+select:hover,
+select:focus {
+    color: #c0392b;
+    background-color: white;
+    border-bottom-color: #DCDCDC;
+}

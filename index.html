@@ -1,0 +1,715 @@
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://d3js.org/d3-queue.v2.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://d3js.org/d3-axis.v1.min.js"></script>
+
+
+    <script type="text/javascript" src="js/ScrollToPlugin.min.js"></script>
+    <script type="text/javascript" src="js/tween.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/world-map.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/part-3.css">
+    <link rel="stylesheet" type="text/css" href="css/parallax.css">
+    <link rel="stylesheet" type="text/css" href="css/examples.css">
+    <link rel="stylesheet" type="text/css" href="css/snackbar.css">
+    <link rel="stylesheet" type="text/css" href="css/scrollmagic_base.css">
+    <link rel="stylesheet" type="text/css" href="css/slides.css">
+    <link rel="stylesheet" type="text/css" href="css/sankey.css">
+    <link rel="stylesheet" type="text/css" href="css/rwanda.css">
+    <link rel="stylesheet" type="text/css" href="css/venezuela.css">
+    <link rel="stylesheet" type="text/css" href="css/syria.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/humans.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-sankey.min.js"></script>
+</head>
+
+<body>
+    <nav id="cd-vertical-nav">
+        <ul>
+            <li>
+                <a href="#intro" data-number="1">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Intro</span>
+                </a>
+            </li>
+            <li>
+                <a href="#summary" data-number="2">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Summary</span>
+                </a>
+            </li>
+            <li>
+                <a href="#conflicts" data-number="3">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Conflicts</span>
+                </a>
+            </li>
+            <li>
+                <a href="#humans" data-number="4">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Humans</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <a class="cd-nav-trigger cd-img-replace">Open navigation<span></span></a>
+
+    <div id="intro" class="header-container fs">
+        <div class="bcg"></div>
+        <header class="wrapper">
+            <h1 class="title">The Movement of Refugees Since 1959</h1>
+            <p>In this visualization, we will walk through the causes of refugee movement over the past six decades.</p>
+            <p>Ankita Singh + Oliver Regele + Durgesh Das</p>
+        </header>
+        <div id="table-of-contents">
+            <div id="block">
+                <a href="#summary" class="section-title">Summary of Refugee Movement </a><br>
+                <div class="description">Holistic movement patterns in the last six decades.</div> <br>
+            </div>
+            <div id="block">
+                <a href="#conflicts" class="section-title">Events Sparking Movement</a> <br>
+                <div class="description">Dive into the Rwandan, Venezuelan, and Syrian crises.</div> <br>
+            </div>
+            <div id="block">
+                <a href="#humans" class="section-title">Human Experience</a> <br>
+                <div class="description">The stories of people who lived these horrors.</div> <br>
+            </div>
+        </div>
+    </div>
+
+    <div id="summary" class="content-block">
+        <div class="wrapper">
+            <header class="slideInUp">
+                <h1>Overview of Global Refugee Movement</h1>
+            </header>
+            <section>
+                <p class="slideInUp slideInUp2">A visual overview of global refugee movements over the last six
+                    decades.</p>
+            </section>
+        </div>
+    </div>
+
+    <div id="map-section">
+        <div id="snackbar"></div>
+        <div class="spacer-around" id="map-container">
+
+            <div class="world-map-header">
+                <p>
+                    The UNHCR publishes data about refugee movement since 1959. The reds denote countries where more
+                    people left than entered, and blues
+                    denote countries where more people entered than left. Click and hover to interact.
+                </p>
+            </div>
+            <div id="world-map-year">1959</div>
+
+            <div class="map-container">
+                <svg width=960 height=480 id="svg_map"></svg>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="totals-section">
+
+        <div class="spacer-around" id="line-container">
+            <div class="world-map-header">
+                <p>
+                    With this data, we can also investigate different types of people movement including refugees,
+                    asylum seekers,
+                    internally displaced people, and others of concern (namely people at risk of persecution).
+                </p>
+            </div>
+
+            <!-- Initialize a select button -->
+            <select id="selectButton"></select>
+
+            <!-- Create a div where the graph will take place -->
+            <div id="my_dataviz"></div>
+
+        </div>
+
+    </div>
+
+    <div id="conflicts" class="content-block">
+        <div class="wrapper">
+            <header class="slideInUp">
+                <h1>Events Sparking Refugee Movements</h1>
+            </header>
+            <section>
+                <p class="slideInUp slideInUp2">
+                    Refugee movements can occur due to a wide variety of inciting events.
+                    Now, we'll explore three specific major refugee movements due to: Genocide,
+                    Politics, and Civil War.
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <!-- THIS IS THE START OF THE RWANDA SECTION -->
+    <!-- *****
+    ****
+    **
+    * -->
+    <div id="intro" class="header-container fs">
+        <div class="rwanda-cover"></div>
+        <header class="rwanda-intro">
+            <h1 class="title">Rwanda</h1>
+            <p><br>1994 <br> <br> Ethnic Genocide</p>
+        </header>
+    </div>
+
+    <div id="rwanda-scene">
+        <div id="slideContainer-rwanda">
+            <div class="panel geo-political">
+                <div class="geo-summary">
+                    <h3>In 1994, existing ethnic tensions in Rwanda led to the start of a genocidal campaign that would
+                        ultimately claim of the lives of an estimated 1 million Rwandan citizens.</h3>
+                </div>
+
+                <div class="details-container-geo">
+                    Prior German and Belgium colonial administrations had created artificial rifts between the
+                    Hutu, Tutsi and Twa ethnic groups in Rwanda. These groups were alternatively disenfranchised
+                    or empowered in pursuit of the colonial goals and ethnic divisions were reinforced via
+                    government and administrative policies.
+                </div>
+
+                <div class="details-container-geo">
+                    Violence between the Hutu and Tutsi groups occurred spontaneously eventually leading to an
+                    ongoing civil war between the Hutu government and the Tutsi Rwandan Patriotic Front rebel
+                    group. The general Rwandan civilian population, however, was still comprised of all three
+                    ethnic groups.
+                </div>
+
+                <div class="details-container-geo">
+                    The civil war underwent a cease-fire in 1993 and the Rwandan dictator Juvenal Habyarimana had agreed
+                    to a new transitional government. However, Habyarimana’s assassination in 1994 led to the start of a
+                    genoicidal campaign by extremist Hutus against Rwanda’s Tutsi, Twa and moderate Hutu population.
+                </div>
+            </div>
+
+            <div class="panel key-players">
+                <div class="players-summary">
+                    <h3>The genocide was perpetrated by extremist Hutu groups against Rwanda's Tutsi, Twa, and moderate
+                        Hutu populations.</h3>
+                </div>
+
+                <div class="groupX">
+                    <h4>Extremist Hutus</h4>
+                    <p class="desc-text">The attacks were carried out by various groups with anti-Tutsi sentiment and
+                        those supporting Hutu
+                        Power.
+                        These included the Hutu government and military, the Interahamwe and Impuzamugambi Hutu militia
+                        groups as well as sympathetic Hutu civilians that joined in on the killings.</p>
+                </div>
+
+                <div class="groupY">
+                    <h4>Rwandan Civilians</h4>
+                    <p class="desc-text">The genoicidal campaign targeted a wide swath of groups that were seen as
+                        enemies to the Hutu Power movement.
+                        This started with key Tutsi and moderate Hutus in the military or political spheres, however the
+                        killings were coordinated to target Rwandan civilians as well.
+                    </p>
+                </div>
+
+
+            </div>
+
+            <div class="panel events">
+                <div class="conflict-summary">
+                    <h3>The Rwandan Genocide led to generalized chaos throughout the entire region, starting a mass
+                        Refugee exodus.</h3>
+                </div>
+
+                <div class="svg-data-container">
+                    <div id="vis-container-rwa"></div>
+                </div>
+
+                <div class="details-container-rwa">
+                    <h4></h4>
+                    <ul>
+                        <li>The killings quickly spread throughout the entire country as the organized extremist Hutus
+                            successfully persuaded Hutu civilians to participate in the genocide.</li><br>
+                        <li>This extreme action quickly restarted the Rwandan Civil War and the rebel RFP sprang into
+                            action to retake the country, adding to the chaos.</li><br>
+                        <li>The indiscriminate killing led to a mass exodus of non-Hutu civilians, desperate to flee the
+                            genocide</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel outcomes">
+                <div class="outcomes-summary">
+                    <h3>The eventual outcomes of the Rwandan Genocide were:</h3>
+                </div>
+
+                <div class="details-container-geo">
+                    In the end, an estimated 1 Million Rwandans lost their lives in the genocide, including 70%
+                    of the country's Tutsi population.
+                </div>
+
+                <div class="details-container-geo">
+                    The destruction caused by the genocide and civil war decimated the country's infrastrcuture,
+                    economy and governmental institutions, as key people were either murdered or fled the
+                    country.
+                </div>
+                <div class="details-container-geo">The renewed civil war led to the downfall of the extremist
+                    administration, as the RFP took
+                    power. This led to another exodus, this time of Hutus, fearing reprisals. </div>
+
+                <div class="details-container-geo">In the end, 2 million Rwandans fled the country as refugees,
+                    fleeing largely to
+                    neighboring countries in Africa. </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <div id="rwanda-map-section">
+        <div class="spacer-around" id="rwanda-map-container">
+            <div class="world-map-header">
+                <p>
+                    Scroll and click to see where Rwandans went during and after the conflict period.
+                </p>
+            </div>
+            <div id="rwanda-world-map-year">1994</div>
+
+            <div class="rwanda-map-container">
+                <svg width=960 height=480 id="svg_map_rwanda"></svg>
+            </div>
+        </div>
+    </div>
+
+    <div id="sankey-container-rwanda"></div>
+
+    <!-- THIS IS THE END OF THE RWANDA SECTION -->
+    <!-- *
+    **
+    ***
+    **** -->
+    <!-- THIS IS THE START OF THE VENEZUELA SECTION -->
+    <!-- *****
+    ****
+    **
+    * -->
+
+    <div id="intro" class="header-container fs">
+        <div class="venezuela-cover"></div>
+        <header class="venezuela-intro">
+            <h1 class="title">Venezuela</h1>
+            <p><br>1997 - Present<br><br>Politics</p>
+        </header>
+    </div>
+
+    <div id="venezuela-scene">
+        <div id="slideContainer-venezuela">
+            <div class="panel geo-political">
+                <div class="geo-summary">
+                    <h3>The ongoing Bolivarian Revolution of the Hugo Chavez and Nicolas Maduro administrations has
+                        created a socioeconomic crisis in Venezuela.</h3>
+                </div>
+
+                <div class="details-container-geo">
+                    The Bolvarian revolution started with the administration of Hugo Chavez in 1998, who started
+                    Bolivarian missions to provide public services. Many of these policies did in fact raise quality of
+                    life for the lower class population in Venezuela.
+                </div>
+
+                <div class="details-container-geo">
+                    However these populist policies began to yield economic difficulties for the country as they proved
+                    unsustainable.
+                    Nevertheless, Nicolas Maduro, who succeeded Chavez in 2013, doubled down on these socialist policies
+                    which created high inflation rates and goods shortage
+                </div>
+                <div class="details-container-geo">These policies continued the Venezuelan decline, creating a general
+                    deterioration of both the economic and social situation in the country.
+                    These conditions have led to a mass emigration from Venezuela, resulting in what is termed the
+                    Bolivarian diaspora, throughout South America.</div>
+            </div>
+
+            <div class="panel key-players">
+                <div class="players-summary">
+                    <h3>The Bolivarian Revolution is mainly supported by the Maduro administration and inflicted upon
+                        the general Venezuelan population.</h3>
+                </div>
+
+                <div class="groupX">
+                    <h4>Bolivarian Revolution Supporters</h4>
+                    <p class="desc-text">The main "aggressors" in this conflict are the Chavez and Maduro
+                        administrations as well as the goverment groups at their disposal.
+                        The party currently in control is the Simon Bolivar Great Patriotic Pole, a left-wing socialist
+                        group that supports the Bolivarian Revolution and blames problems on the "economic war" beign
+                        waged on Venezuela.</p>
+                </div>
+
+                <div class="groupY">
+                    <h4>Bolivarian Revolution Victims</h4>
+                    <p class="desc-text">The victims of this Bolivarian Revolution are the general civilian population
+                        that is subject to the deteriorating economic, political and social conditions in the country.
+                        The main political opposition group in Venezuela is the Democratic Unity Roundtable, a center to
+                        center-left political group that opposes the Chavist and Madurist economic policies. </p>
+                </div>
+            </div>
+
+            <div class="panel events">
+                <div class="conflict-summary">
+                    <h4>The ongoing Bolivarian Revolution has led to a general deterioration to the quality of life of
+                        the Venezuelan population.</h4>
+                </div>
+
+                <div class="svg-data-container">
+                    <div id="vis-container-vene"></div>
+                </div>
+
+                <div class="details-container-ven">
+                    <h4></h4>
+                    <ul>
+                        <li>The policies of the Chavez and Maduro administrations led to one of the most severe economic
+                            crises facing a country in recent history.
+                            These economic policies have resulted in runaway, rampant hyperinflation as well as goods
+                            shortages that have increased the poverty level in Venezuela.
+                            Many citizens are unable to access basic needs and goods required for survival, such as
+                            food. </li>
+                        <br>
+                        <li>The unfavorable economic state has also led to a deterioration in social conditions as many
+                            Venezuelans are in a state of poverty.
+                            This has resulted in an extraordinary growth in the crime and murder rate in the country.
+                            Additionally many citizens lack access to basic health services as poverty levels increased
+                            resulting in a dire healthcare condition </li>
+                        <br>
+                        <li>The instability has also resulted in reprisals and political repression by the Maduro
+                            administration upon protesting citizens.
+                            There are reports of politically motivated arrests and disappearances as well as human
+                            rights violations of detainees.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel outcomes">
+                <div class="outcomes-summary">
+                    <h3>The result has been a mass emigration from Venezuela so large that the group of refugees has
+                        been termed the Bolivarian Diaspora.</h3>
+                </div>
+
+                <div class="details-container-geo">
+                    The emigration from Venezuela started gradually with the Chavez administration in 1998.
+                    The initial emigrants were primarily the wealthy citizens of Venezuela, anticipating
+                    oncoming difficulties with the socialistic policies.
+                </div>
+
+                <div class="details-container-geo">
+                    The emigration greatly accelerated in 2015, as Maduro doubled-down on the socialistic
+                    policies and the general condition of Venezueal deteriorated.
+                    These emigrants were comprised primarily of young professionals seeking improved quality of
+                    life in other countries.
+                </div>
+                <div class="details-container-geo">As of today, 4.5 million Venezuelan citizens have fled the
+                    socio-economic insecurity of the
+                    country and sought refuge in other countries. </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="venezuela-map-section">
+        <div class="spacer-around" id="venezuela-map-container">
+            <div class="world-map-header">
+                <p>
+                    Scroll and click to see where Venezuelans went during and after the conflict period.
+                </p>
+            </div>
+            <div id="venezuela-world-map-year">1994</div>
+
+            <div class="venezuela-map-container">
+                <svg width=960 height=480 id="svg_map_venezuela"></svg>
+            </div>
+        </div>
+    </div>
+
+    <div id="sankey-container-venezuela"></div>
+
+    <!-- THIS IS THE END OF THE VENEZUELA SECTION -->
+    <!-- *
+    **
+    ***
+    **** -->
+    <!-- THIS IS THE START OF THE SYRIA SECTION -->
+    <!-- *****
+    ****
+    **
+    * -->
+
+    <div id="intro" class="header-container fs">
+        <div class="syria-cover"></div>
+        <header class="syria-intro">
+            <h1 class="title">Syria</h1>
+            <p><br>2011-Present<br><br>Civil War</p>
+        </header>
+    </div>
+
+    <div id="syria-scene">
+        <div id="slideContainer-syria">
+            <div class="panel geo-political">
+                <div class="geo-summary">
+                    <h3>2011 marks the start of the Syrian Civil war, an ongoing conflict and humanitarian crisis that
+                        continues to this day</h3>
+                </div>
+
+                <div class="details-container-geo">
+                    In the early 2010s, the Middle-Eastern world saw a series of anti-government protests and
+                    uprisings that became known as the Arab Spring.
+                    The protests opposed the oppressive regimes and low quality of life in severl countries
+                    throughout the region, including Syria.
+                </div>
+
+                <div class="details-container-geo">
+                    Major protests and unrest occurred in Damascus and Aleppo, opposing the current al-Assad
+                    regime.
+                    The Assad regime began a series of brutal crackdowns resulting in thousands of civilian
+                    deaths and the start of an armed insurgency opposing the government.
+                </div>
+                <div class="details-container-geo">Since then the conflict has developed into an ongoing quagmire that
+                    has grown to include
+                    numerous internal and external groups as combatants.
+                    The dangers posed to Syrian civilians by this conflict have resulted in one of the largest
+                    humanitarian emergencies in recent history and leading millions to flee the country.</div>
+            </div>
+
+            <div class="panel key-players">
+                <div class="players-summary">
+                    <h3>The Syrian Conflict is composed of a complex shifting patchwork of Combatant Groups, creating
+                        widespread instability and chaos throughout the region</h3>
+                </div>
+
+                <div class="groupX">
+                    <h4>Pro-Assad Groups</h4>
+                    <p class="desc-text">
+                        The government is supported by numerous internal groups such as the Syrian Armed Forces and
+                        National Defens group.
+                        There are also numerous unofficial militia groups, such as the Shabiha, that support the current
+                        government in its campaigns.
+                        External groups also support the current Assad regime, these involve state actors such as
+                        Hezbollah as well as nations such as Iran and Russia.
+                    </p>
+                </div>
+
+                <div class="groupY">
+                    <h4>Syrian Opposition</h4>
+                    <p class="desc-text">
+                        The anti-Assad effort is mainly headed up by the Free Syrian Army, made up by defectors from the
+                        Syrian Army.
+                        The effort is also organized by the National Coaliting an interim government intending to take
+                        power.
+                        However the opposition to the government is not unified, there are other groups such as the
+                        Syrian Salvation Govermnet and National Coordination Committee with different goals leading to
+                        infighting.
+                        Finally there is also the involvement of jihadi groups, taking advantage of the current
+                        instability to take power.
+                    </p>
+                </div>
+            </div>
+
+            <div class="panel events">
+                <div class="conflict-summary">
+                    <h3>The chaos and dangers posed by the multiple armed groups operating in the region have destroyed
+                        the once peaceful fabric of Syrian society.
+                    </h3>
+                </div>
+
+                <div class="svg-data-container">
+                    <div id="vis-container"></div>
+                </div>
+
+                <div class="details-container-ven">
+                    <h4></h4>
+                    <ul>
+                        <li>What started as an internal civil war, led to the intervention of numerous groups as a
+                            result civilian populations faced threats from multiple combatants.</li><br>
+                        <li>The Syrian population faced human rights abuses from numerous angles, from the government
+                            which deployed chemical weapons non-speifically, to extremist Islamist groups that murdered
+                            civilians en masse.</li><br>
+                        <li>This led to the intervention of outside groups such as Russia, Turkey, the Kurds and the
+                            United States.
+                            These groups unfortunately supported seperate factions intensifying the combat and further
+                            adding to the instability.</li><br>
+                        <li>Multiple cease-fire and buffer zone agreements were attempted but quickly fell apart as the
+                            conflict raged on, forcing civilians to either flee or continue to live amongst the
+                            fighting.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel outcomes">
+                <div class="outcomes-summary">
+                    <h3>The Syrian conflict represents one of the largest humanitarian crises in recent history, one
+                        that continues to affect Syrian citizens to this day</h3>
+                </div>
+
+                <div class="details-container">
+                    <h4></h4>
+                    <ul>
+                        <li>The conflict has resulted in an estimated 118,000 civilian deaths for a total of 586,100
+                            deaths.</li><br>
+                        <li>Over 7.6 million Syrians are internally displaced and 5.1 million are currently refugees
+                        </li><br>
+                        <li>The conflict is currently ongoing, putting more civilians in hardship and complicating
+                            efforts to resettle the refugees.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="conflict-map-section">
+        <div class="spacer-around" id="conflict-map-container">
+            <div class="world-map-header">
+                <p>
+                    Scroll and click to see where Syrians went during the conflict period. Note the dramatic drop in
+                    Syrians entering the US after the most recent election.
+                </p>
+            </div>
+            <div id="conflict-world-map-year">2011</div>
+
+            <div class="conflict-map-container">
+                <svg width=960 height=480 id="svg_map_conflict"></svg>
+            </div>
+        </div>
+    </div>
+
+    <div id="sankey-container-syria"></div>
+
+    <!-- THIS IS THE END OF THE SYRIA SECTION -->
+    <!-- *
+    **
+    ***
+    **** -->
+
+    <div id="humans" class="content-block">
+        <div class="wrapper">
+            <header class="slideInUp">
+                <h1>The Human Experience</h1>
+            </header>
+            <section>
+                <p class="slideInUp slideInUp2">
+                    <br>
+                    These individuals face incomparable struggles, not only in fleeing the situations in their home
+                    country, but also in adapting to their new environment.
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <div id="intro" class="header-container humans-backgrounds fs">
+        <div class="rwanda-human-cover"></div>
+        <div class="rwanda-human-intro">
+            <h1 class="title">Monica</h1>
+            <h3>Hutu Survivor of the Rwandan Genocide</h3>
+            <br>
+            <p class="info-text">This Monica, a Hutu survivor of the Rwandan genocide.
+                Due to her marriage to a Tutsi she was targeted by her own family, her Hutu brothers and father.
+                Her six children and husband were slaughtered in front of her eyes.
+                She narrowly escaped the violence herself fleeing from her own family.
+                In order to flee the ongoing violence, Monica fled to Tanzania where she lived in a refugee camp.
+                Since the time of the genocide she has repatriated to Rwanda.
+                She draws support from a dialogue club which seeks to counsel survivors and bring together both Hutu and
+                Tutsi to create a dialogue and community</p>
+            <br>
+        </div>
+    </div>
+
+    <div id="intro" class="header-container humans-backgrounds fs">
+        <div class="venezuela-human-cover"></div>
+        <div class="venezuela-human-intro">
+            <h1 class="title">Cibel Ortiz</h1>
+            <h3>Venezuelan Refugee living in Colombia</h3>
+            <br>
+            <p class="info-text">This is Cibel Ortiz, a Venezuelan citizen who left the country to come into Colombia as
+                a refugee. Cibel
+                fled Venezuela on foot, walking for seven days with her husband and 2-month old baby in order to reach
+                Colombia. In Venezuela, Cibel had lost her business which sold cleaning supplies as the economy
+                collapsed. She recalls rampant food insecurity with people scavenging for food in the garbage. She
+                lacked the essentials such as milk and diapers for her newborn child, this lack of necessities
+                precipitated the difficult decision to abandon Venzuela and leaving other family members behind.</p>
+            <br>
+            <p class="info-text">
+                However, life still proved difficult once they reached Colombia. After a week of living on the streets
+                the family found themselves in a barebones apartment. Cibel supported her family by selling snacks to
+                bus passengers for 12 hours a day. However, this was barely enough to make ends meet and her son Matias
+                often went hungry. To this day she struggles with making ends meet and relies on the assistance of
+                charitable organizations.</p>
+        </div>
+    </div>
+
+    <div id="intro" class="header-container humans-backgrounds fs">
+        <div class="syria-human-cover"></div>
+        <div class="syria-human-intro">
+            <h1 class="title">The Kalaji Family</h1>
+            <h3>Syrian Refugee Family living in Philadelphia</h3>
+            <br>
+            <p class="info-text">This is the Kalaji family, a family of Syrian citizens that was able to escape the
+                violence of the Syrian Civil war.
+                Originally from Aleppo, the family was able to escape to Joran which served as a temporary home for the
+                group.
+                Eventually the family was able to seek a new life in the Philadelphia, one of the last Syrian refugees
+                to be able to enter the US before the Travel Ban.
+                However, this difficult decision resulted in them leaving behind their eldest pregnant daughter and
+                other family members.</p>
+            <br>
+            <p class="info-text">
+                The family still faced difficulties once in Philadelphia in terms of integrating into American society
+                but also in terms of financial self-sufficiency.
+                The refugee aid organization was only able to financially support the family for 3 months.
+                The family is currently living in Philadelphia, continuing to adjust to their new life as refugees in
+                the US.</p>
+        </div>
+    </div>
+
+    <div id="humans" class="content-block footer">
+        <div class="wrapper">
+            <header class="slideInUp">
+                <h1>Thanks for watching!</h1>
+            </header>
+            <section>
+                <p class="slideInUp slideInUp2"></p>
+            </section>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/world-map.js"></script>
+    <script type="text/javascript" src="js/world-map-syria.js"></script>
+    <script type="text/javascript" src="js/world-map-rwanda.js"></script>
+    <script type="text/javascript" src="js/world-map-venezuela.js"></script>
+    <script type="text/javascript" src="js/line-graph.js"></script>
+    <script type="text/javascript" src="js/nav.js"></script>
+    <script type="text/javascript" src="js/sankey.js"></script>
+    <script type="text/javascript" src="js/scroller.js"></script>
+    <script type="text/javascript" src="js/syria.js"></script>
+    <script type="text/javascript" src="js/rwanda.js"></script>
+    <script type="text/javascript" src="js/venezuela.js"></script>
+
+</body>

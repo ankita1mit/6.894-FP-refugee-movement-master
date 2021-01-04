@@ -1,0 +1,24 @@
+{
+  "name": "a4-the-movement-of-refugees-over-last-five-decades",
+  "version": "1.0.0",
+  "description": "",
+  "main": "a4.js",
+  "dependencies": {
+    "connect": "^3.7.0",
+    "foundation-sites": "^6.6.1",
+    "http-server": "^0.12.1",
+    "json": "^9.0.6",
+    "serve-static": "^1.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.mit.edu:6894-sp20/A4-The-movement-of-refugees-over-last-five-decades.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
