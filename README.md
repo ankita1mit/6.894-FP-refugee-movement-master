@@ -7,7 +7,7 @@ Demo Page: https://github.mit.edu/pages/6894-sp20/FP-refugee-movement/
 Team Members
 > Oliver Regele (oregele)
 
-> Ankita Singh (asingh)
+> Ankita Singh (ankita1)
 
 > Durgesh Das (ddas)
 
